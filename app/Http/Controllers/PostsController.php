@@ -2,22 +2,17 @@
 
 namespace App\Http\Controllers;
 
-class PostsController
+use DB;
+use App\Models\Post;
+
+class PostsController extends Controller
 {
-    public function show($post)
+        public function index()
     {
-        $posts = [
-            'my-first-post' => 'Hello, this is my first post',
-            'my-second-post' => 'Now i am getting the hang of this blogging thing'
-        ];
 
-        if (! array_key_exists($post, $posts)) {
-            abort(404, 'Sorry,That post wa snot found');
-        }
+        $post = Post::all();
 
-        return view('post', [
-            'post' => $posts[$post]
+        return view('post', ['post' => $post
         ]);
     }
-
 }

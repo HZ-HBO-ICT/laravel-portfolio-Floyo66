@@ -13,30 +13,16 @@ use App\Http\Controllers\PostsController;
 |
 */
 
-Route::get('/', function(){
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\IndexController::class, 'show']);
 
-Route::get('/blog', function(){
-    return view('blog');
-});
+Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'show']);
 
-Route::get('/dashboard', function(){
-    return view('dashboard');
-});
+Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'show']);
 
-Route::get('/faq', function(){
-    return view('faq');
-});
+Route::get('/faq', [\App\Http\Controllers\FaqController::class, 'index']);
 
-Route::get('/post', function(){
-    return view('post');
-});
+Route::get('/post', [\App\Http\Controllers\PostsController::class, 'index']);
 
-Route::get('/post1', function(){
-    return view('post1');
-});
+Route::get('/post1', [\App\Http\Controllers\Post1Controller::class, 'show']);
 
-Route::get('/profile', function(){
-    return view('profile');
-});
+Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'show']);
