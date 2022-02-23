@@ -13,6 +13,6 @@
 <body>
     <h1>My Blog Post</h1>
 
-    <p>{{ $post }}</p>
+    <p>{{ $faq }}</p>
 </body>
 </html>

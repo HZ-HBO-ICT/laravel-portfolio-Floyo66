@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,21 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/posts/{post}', function ($post) {
-    $posts = [
-        'my-first-post' => 'Hello, this is my first blog post!',
-        'my-second-post' => 'Now I am getting the hang of this blogging thing.'
-    ];
+Route::get('/', [\App\Http\Controllers\IndexController::class, 'show']);
 
-    if (!array_key_exists($post, $posts)) {
-        abort(404, 'Sorry, that post was not found.');
-    }
+Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'show']);
 
-    return view('post', [
-        'post' => $posts[$post]
-    ]);
-});
+Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'show']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/faq', [\App\Http\Controllers\FaqController::class, 'index']);
+
+Route::get('/post', [\App\Http\Controllers\PostsController::class, 'index']);
+
+Route::get('/post1', [\App\Http\Controllers\Post1Controller::class, 'show']);
+
+Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'show']);
